@@ -13,10 +13,13 @@ jobs:
             dotnet-version: '8.x'
 
         - name: Restore
+          working-directory: practice2025 
           run: dotnet restore
 
         - name: Build
+          working-directory: practice2025
           run: dotnet build
 
         - name: Tests
+          working-directory: practice2025
           run: dotnet test
