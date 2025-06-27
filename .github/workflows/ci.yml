@@ -1,0 +1,27 @@
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+
+      - name: Restore
+        working-directory: practice2025
+        run: dotnet restore
+
+      - name: Build
+        working-directory: practice2025
+        run: dotnet build --no-restore
+
+      - name: Tests
+        working-directory: practice2025
+        run: dotnet test --no-build
